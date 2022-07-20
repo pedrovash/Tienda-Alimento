@@ -1,0 +1,97 @@
+﻿@model Eva02Comida.Models.Alimento
+
+@{
+    ViewData["Title"] = "Crear Alimento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card text-center  bg-success text-white">
+    <div class="card-header">
+        <strong>Ingrese Informacion del Alimento</strong>
+    </div>
+</div>
+
+
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <form class="row" asp-action="CrearAlimento" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-6">
+
+                <div class="form-group m-2">
+                    <input asp-for="Name" class="form-control" placeholder="Nombre" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input asp-for="Descripcion" class="form-control" placeholder="Descripcion" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input asp-for="Detalles" class="form-control" placeholder="Detalles" />
+                    <span asp-validation-for="Detalles" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input asp-for="Color" class="form-control" placeholder="Color" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input asp-for="Porte" class="form-control" placeholder="Tamaño" />
+                    <span asp-validation-for="Porte" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input asp-for="Peso" class="form-control" placeholder="Peso" />
+                    <span asp-validation-for="Peso" class="text-danger"></span>
+                </div>
+                     <div class="mb-2">
+                    <label for="formFile" class="form-label">Imagen Alimento</label>
+                    <input class="form-control" asp-for="ImagenFile" id="formFile">
+                </div>
+            </div>
+            <div class="col-md-5">
+
+
+
+
+                <div class="form-group m-2">
+                    <input asp-for="Cantidad" class="form-control" placeholder="Cantidad" />
+                    <span asp-validation-for="Cantidad" class="text-danger"></span>
+                </div>
+           
+
+                <div class="form-group m-2">
+                    <label class="control-label">Marca</label>
+                    <select asp-for="MarcaId" class="form-select" asp-items="ViewBag.Marcas"></select>
+                </div>
+                <div class="form-group m-2">
+                    <label class="control-label">Edad</label>
+                    <select asp-for="EdadId" class="form-select" asp-items="ViewBag.Edades"></select>
+                </div>
+                <div class="form-group m-2">
+                    <label class="control-label">Especie</label>
+                    <select asp-for="EspecieId" class="form-select" asp-items="ViewBag.Especies"></select>
+                </div>
+                <div class="form-group m-2">
+                    <label class="control-label">Formato</label>
+                    <select asp-for="FormatoId" class="form-select" asp-items="ViewBag.Formatos"></select>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="submit" value="Crear" class="btn btn-warning col-11" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+    <a class="btn btn-warning col-12 mt-2" asp-action="Index">Regresar al listado</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

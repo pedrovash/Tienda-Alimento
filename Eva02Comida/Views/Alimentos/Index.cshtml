@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Eva02Comida.Models.Alimento>
+
+@{
+    ViewData["Title"] = "Administracion Alimento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<h1 class="text-center"><strong>Alimentos para Animales</strong></h1>
+
+<div class="card text-center  bg-success text-white">
+    <div class="card-header">
+        <strong>Administracion de Alimentos</strong>
+    </div>
+    <div class="card-body">
+        <a asp-action="CrearAlimento"
+           class="btn btn-warning"><i class="fa-solid fa-user-plus me-2"></i>Agregar Nuevo Alimento</a>
+    </div>
+</div>
+
+<div class="row justify-content-evenly mt-3">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-3 text-center mb-4">
+            <div class="card p-3">
+                <img class="img-fluid" src="~/img/@item.imagenUrl" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Descripcion</p>
+                    <a asp-action="Editar" asp-route-IdAlimento="@item.Id"><i class="fa-solid fa-pen-to-square me-2"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info me-2"></i></a>
+                    <a asp-action="Eliminar" asp-route-IdAlimento="@item.Id"><i class="fa-solid fa-trash me-2"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
